@@ -6,14 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://long0428.cc">
-  <title>To see a world in a flower</title>
+  <title>spring boot 增加拦截器 | To see a world in a flower</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="To see a world in a flower">
-<meta property="og:url" content="http://long0428.cc/index.html">
+  <meta name="description" content="刚开始使用spring boot还是挺痛苦的，没有了各种XML反而不适应。。。这里给出如何注解添加一个拦截器
+第一步、继承WebMvcConfigurerAdapter12345678910111213141516171819202122232425262728293031323334353637package com.kindo.config;import org.springframework">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spring boot 增加拦截器">
+<meta property="og:url" content="http://long0428.cc/2016/11/30/spring boot增加拦截器/index.html">
 <meta property="og:site_name" content="To see a world in a flower">
+<meta property="og:description" content="刚开始使用spring boot还是挺痛苦的，没有了各种XML反而不适应。。。这里给出如何注解添加一个拦截器
+第一步、继承WebMvcConfigurerAdapter12345678910111213141516171819202122232425262728293031323334353637package com.kindo.config;import org.springframework">
+<meta property="og:updated_time" content="2016-11-30T09:38:58.706Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="To see a world in a flower">
+<meta name="twitter:title" content="spring boot 增加拦截器">
+<meta name="twitter:description" content="刚开始使用spring boot还是挺痛苦的，没有了各种XML反而不适应。。。这里给出如何注解添加一个拦截器
+第一步、继承WebMvcConfigurerAdapter12345678910111213141516171819202122232425262728293031323334353637package com.kindo.config;import org.springframework">
   
     <link rel="alternative" href="/atom.xml" title="To see a world in a flower" type="application/atom+xml">
   
@@ -125,9 +132,7 @@
 </nav>
 
       <div class="body-wrap">
-        
-  
-    <article id="post-spring boot增加拦截器" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-spring boot增加拦截器" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <input type="hidden" class="isFancy" />
@@ -136,8 +141,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/30/spring boot增加拦截器/">spring boot 增加拦截器</a>
+    <h1 class="article-title" itemprop="name">
+      spring boot 增加拦截器
     </h1>
   
 
@@ -168,68 +173,45 @@
   </div>
 </article>
 
-
-
-
-
-
-
-
-
-
   
-    <article id="post-自定义jsckson null转换为字符串" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/29/自定义jsckson null转换为字符串/">自定义jsckson null转换为字符串</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在使用spring boot中，默认配置使用jackson时，对象的null值也会被解析成null输出到前台，我们需要把null转换成空字符串</p>
-<h3 id="第一步、自定义ObjectMapper"><a href="#第一步、自定义ObjectMapper" class="headerlink" title="第一步、自定义ObjectMapper"></a>第一步、自定义ObjectMapper</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.kindo.config;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.io.IOException;</div><div class="line"><span class="keyword">import</span> com.fasterxml.jackson.core.JsonGenerator;</div><div class="line"><span class="keyword">import</span> com.fasterxml.jackson.core.JsonProcessingException;</div><div class="line"><span class="keyword">import</span> com.fasterxml.jackson.databind.JsonSerializer;</div><div class="line"><span class="keyword">import</span> com.fasterxml.jackson.databind.ObjectMapper;</div><div class="line"><span class="keyword">import</span> com.fasterxml.jackson.databind.SerializerProvider;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">KindoObjectMapper</span> <span class="keyword">extends</span> <span class="title">ObjectMapper</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	* </div><div class="line">	*/</div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">KindoObjectMapper</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">super</span>();</div><div class="line">		<span class="comment">// 数字也加引号</span></div><div class="line">		<span class="comment">// this.configure(JsonGenerator.Feature.WRITE_NUMBERS_AS_STRINGS, true);</span></div><div class="line">		<span class="comment">// this.configure(JsonGenerator.Feature.QUOTE_NON_NUMERIC_NUMBERS,</span></div><div class="line">		<span class="comment">// true);</span></div><div class="line">		<span class="comment">// 空值处理为空串</span></div><div class="line">		<span class="keyword">this</span>.getSerializerProvider().setNullValueSerializer(<span class="keyword">new</span> JsonSerializer&lt;Object&gt;() &#123;</div><div class="line">			<span class="meta">@Override</span></div><div class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">serialize</span><span class="params">(Object value, JsonGenerator jg, SerializerProvider sp)</span></span></div><div class="line">					<span class="keyword">throws</span> IOException, JsonProcessingException &#123;</div><div class="line">				jg.writeString(<span class="string">""</span>);</div><div class="line">			&#125;</div><div class="line">		&#125;);</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="第二步、修改SpringBoot启动类"><a href="#第二步、修改SpringBoot启动类" class="headerlink" title="第二步、修改SpringBoot启动类"></a>第二步、修改SpringBoot启动类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 自定义ObjectMapper</div><div class="line"> * </div><div class="line"> * <span class="doctag">@return</span></div><div class="line"> */</div><div class="line"><span class="meta">@Bean</span></div><div class="line"><span class="function"><span class="keyword">public</span> MappingJackson2HttpMessageConverter <span class="title">mappingJacksonHttpMessageConverter</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="keyword">final</span> MappingJackson2HttpMessageConverter converter = <span class="keyword">new</span> MappingJackson2HttpMessageConverter();</div><div class="line">	KindoObjectMapper mapper = <span class="keyword">new</span> KindoObjectMapper();</div><div class="line">	converter.setObjectMapper(mapper);</div><div class="line">	<span class="keyword">return</span> converter;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/11/29/自定义jsckson null转换为字符串/" class="archive-article-date">
-  	<time datetime="2016-11-29T08:52:26.045Z" itemprop="datePublished"><i class="icon-clock"></i>2016-11-29</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring-Boot/">Spring-Boot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jsckson/">jsckson</a></li></ul>
-	</div>
-
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
+<nav id="article-nav">
   
   
+    <a href="/2016/11/29/自定义jsckson null转换为字符串/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">自定义jsckson null转换为字符串</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="spring boot增加拦截器" data-title="spring boot 增加拦截器" data-url="http://long0428.cc/2016/11/30/spring boot增加拦截器/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"long0428"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
 
 
       </div>
@@ -251,8 +233,8 @@
 		fancybox: true,
 		mathjax: false,
 		animate: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
