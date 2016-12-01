@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://long0428.cc/"/>
-  <updated>2016-11-30T09:38:58.706Z</updated>
+  <updated>2016-12-01T02:57:25.655Z</updated>
   <id>http://long0428.cc/</id>
   
   <author>
@@ -14,6 +14,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>jenkins Undeploy Failed Error</title>
+    <link href="http://long0428.cc/2016/12/01/jenkins%20Undeploy%20Failed%20Error/"/>
+    <id>http://long0428.cc/2016/12/01/jenkins Undeploy Failed Error/</id>
+    <published>2016-12-01T02:57:25.627Z</published>
+    <updated>2016-12-01T02:57:25.655Z</updated>
+    
+    <content type="html"><![CDATA[<p>发现jenkins构建的时间无法删除自己发布的旧工程，导致构建失败。日志报 Failed to undeploy错误。</p>
+<p>google了下，从2方面去解决。</p>
+<p>第一个是看给的权限有没有缺少<br>第二个修改context.xml</p>
+<h3 id="第一步、增加tomcat权限"><a href="#第一步、增加tomcat权限" class="headerlink" title="第一步、增加tomcat权限"></a>第一步、增加tomcat权限</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;user name=<span class="string">"admin"</span> password=<span class="string">"admin"</span> roles=<span class="string">"admin-gui,manager,manager-script,manager-jmx,manager-gui,manager-status"</span> /&gt;</div></pre></td></tr></table></figure>
+<h3 id="第二步、修改context-xml-增加一句话"><a href="#第二步、修改context-xml-增加一句话" class="headerlink" title="第二步、修改context.xml 增加一句话"></a>第二步、修改context.xml 增加一句话</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;Context antiResourceLocking=<span class="string">"true"</span>&gt;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;发现jenkins构建的时间无法删除自己发布的旧工程，导致构建失败。日志报 Failed to undeploy错误。&lt;/p&gt;
+&lt;p&gt;google了下，从2方面去解决。&lt;/p&gt;
+&lt;p&gt;第一个是看给的权限有没有缺少&lt;br&gt;第二个修改context.xml&lt;/p&gt;
+&lt;h3 id
+    
+    </summary>
+    
+    
+      <category term="jenkins" scheme="http://long0428.cc/tags/jenkins/"/>
+    
+  </entry>
   
   <entry>
     <title>spring boot 增加拦截器</title>

@@ -6,14 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://long0428.cc">
-  <title>Tag: 拦截器 | To see a world in a flower</title>
+  <title>jenkins Undeploy Failed Error | To see a world in a flower</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="To see a world in a flower">
-<meta property="og:url" content="http://long0428.cc/tags/拦截器/index.html">
+  <meta name="description" content="发现jenkins构建的时间无法删除自己发布的旧工程，导致构建失败。日志报 Failed to undeploy错误。
+google了下，从2方面去解决。
+第一个是看给的权限有没有缺少第二个修改context.xml
+第一步、增加tomcat权限1&amp;lt;user name=&quot;admin&quot; password=&quot;admin&quot; roles=&quot;admin-gui,manager,manager-scri">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jenkins Undeploy Failed Error">
+<meta property="og:url" content="http://long0428.cc/2016/12/01/jenkins Undeploy Failed Error/index.html">
 <meta property="og:site_name" content="To see a world in a flower">
+<meta property="og:description" content="发现jenkins构建的时间无法删除自己发布的旧工程，导致构建失败。日志报 Failed to undeploy错误。
+google了下，从2方面去解决。
+第一个是看给的权限有没有缺少第二个修改context.xml
+第一步、增加tomcat权限1&amp;lt;user name=&quot;admin&quot; password=&quot;admin&quot; roles=&quot;admin-gui,manager,manager-scri">
+<meta property="og:updated_time" content="2016-12-01T02:57:25.655Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="To see a world in a flower">
+<meta name="twitter:title" content="jenkins Undeploy Failed Error">
+<meta name="twitter:description" content="发现jenkins构建的时间无法删除自己发布的旧工程，导致构建失败。日志报 Failed to undeploy错误。
+google了下，从2方面去解决。
+第一个是看给的权限有没有缺少第二个修改context.xml
+第一步、增加tomcat权限1&amp;lt;user name=&quot;admin&quot; password=&quot;admin&quot; roles=&quot;admin-gui,manager,manager-scri">
   
     <link rel="alternative" href="/atom.xml" title="To see a world in a flower" type="application/atom+xml">
   
@@ -125,54 +138,88 @@
 </nav>
 
       <div class="body-wrap">
+        <article id="post-jenkins Undeploy Failed Error" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
         
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/11/30/spring boot增加拦截器/" class="archive-article-date">
-  	<time datetime="2016-11-30T09:38:58.679Z" itemprop="datePublished"><i class="icon-clock"></i>2016-11-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/11/30/spring boot增加拦截器/">spring boot 增加拦截器</a>
+    <h1 class="article-title" itemprop="name">
+      jenkins Undeploy Failed Error
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>发现jenkins构建的时间无法删除自己发布的旧工程，导致构建失败。日志报 Failed to undeploy错误。</p>
+<p>google了下，从2方面去解决。</p>
+<p>第一个是看给的权限有没有缺少<br>第二个修改context.xml</p>
+<h3 id="第一步、增加tomcat权限"><a href="#第一步、增加tomcat权限" class="headerlink" title="第一步、增加tomcat权限"></a>第一步、增加tomcat权限</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;user name=<span class="string">"admin"</span> password=<span class="string">"admin"</span> roles=<span class="string">"admin-gui,manager,manager-script,manager-jmx,manager-gui,manager-status"</span> /&gt;</div></pre></td></tr></table></figure>
+<h3 id="第二步、修改context-xml-增加一句话"><a href="#第二步、修改context-xml-增加一句话" class="headerlink" title="第二步、修改context.xml 增加一句话"></a>第二步、修改context.xml 增加一句话</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;Context antiResourceLocking=<span class="string">"true"</span>&gt;</div></pre></td></tr></table></figure>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/12/01/jenkins Undeploy Failed Error/" class="archive-article-date">
+  	<time datetime="2016-12-01T02:57:25.627Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-01</time>
+</a>
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring-Boot/">Spring-Boot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/拦截器/">拦截器</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jenkins/">jenkins</a></li></ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-  
-    </div></section>
-  
 
-    
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2016/11/30/spring boot增加拦截器/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">spring boot 增加拦截器</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="jenkins Undeploy Failed Error" data-title="jenkins Undeploy Failed Error" data-url="http://long0428.cc/2016/12/01/jenkins Undeploy Failed Error/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"long0428"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
 
 
       </div>
@@ -195,9 +242,9 @@
 		mathjax: false,
 		animate: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",

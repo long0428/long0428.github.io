@@ -127,6 +127,59 @@
       <div class="body-wrap">
         
   
+    <article id="post-jenkins Undeploy Failed Error" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/01/jenkins Undeploy Failed Error/">jenkins Undeploy Failed Error</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>发现jenkins构建的时间无法删除自己发布的旧工程，导致构建失败。日志报 Failed to undeploy错误。</p>
+<p>google了下，从2方面去解决。</p>
+<p>第一个是看给的权限有没有缺少<br>第二个修改context.xml</p>
+<h3 id="第一步、增加tomcat权限"><a href="#第一步、增加tomcat权限" class="headerlink" title="第一步、增加tomcat权限"></a>第一步、增加tomcat权限</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;user name=<span class="string">"admin"</span> password=<span class="string">"admin"</span> roles=<span class="string">"admin-gui,manager,manager-script,manager-jmx,manager-gui,manager-status"</span> /&gt;</div></pre></td></tr></table></figure>
+<h3 id="第二步、修改context-xml-增加一句话"><a href="#第二步、修改context-xml-增加一句话" class="headerlink" title="第二步、修改context.xml 增加一句话"></a>第二步、修改context.xml 增加一句话</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;Context antiResourceLocking=<span class="string">"true"</span>&gt;</div></pre></td></tr></table></figure>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/12/01/jenkins Undeploy Failed Error/" class="archive-article-date">
+  	<time datetime="2016-12-01T02:57:25.627Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-01</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jenkins/">jenkins</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-spring boot增加拦截器" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -290,7 +343,7 @@
     
     	<section class="tools-section tools-section-tag">
     			<div class="widget tagcloud" id="js-tagcloud">
-    				<a href="/tags/Spring-Boot/" style="font-size: 20px;">Spring-Boot</a> <a href="/tags/jsckson/" style="font-size: 10px;">jsckson</a> <a href="/tags/拦截器/" style="font-size: 10px;">拦截器</a>
+    				<a href="/tags/Spring-Boot/" style="font-size: 20px;">Spring-Boot</a> <a href="/tags/jenkins/" style="font-size: 10px;">jenkins</a> <a href="/tags/jsckson/" style="font-size: 10px;">jsckson</a> <a href="/tags/拦截器/" style="font-size: 10px;">拦截器</a>
     			</div>
     	</section>
     
