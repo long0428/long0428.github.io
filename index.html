@@ -127,6 +127,66 @@
       <div class="body-wrap">
         
   
+    <article id="post-oracle 表分区" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/01/oracle 表分区/">oracle 表分区实战</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>数据库中的某些业务表，会存放很多历史数据，导致查询效率很慢，想用分区进行优化。根据业务下面我会进行几个分区：</p>
+<h3 id="范围分区"><a href="#范围分区" class="headerlink" title="范围分区"></a>范围分区</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> 表</div><div class="line">（字段）</div><div class="line"><span class="keyword">PARTITION</span> <span class="keyword">BY</span> <span class="keyword">RANGE</span> (birthday) </div><div class="line"><span class="built_in">INTERVAL</span>(NUMTOYMINTERVAL(<span class="number">1</span>, <span class="string">'month'</span>)) </div><div class="line">(<span class="keyword">PARTITION</span> P0 <span class="keyword">VALUES</span> <span class="keyword">LESS</span> <span class="keyword">THAN</span> (<span class="keyword">TO_DATE</span>(<span class="string">'2016-1-1'</span>, <span class="string">'yyyy-mm-dd'</span>)));</div></pre></td></tr></table></figure>
+<blockquote>
+<p>创建一个表，自动根据birthday的月份来进行分区。每个月都是一个独立的分区。查询这个表一般会根据birthday的范围来做查询。</p>
+</blockquote>
+<p>现在我们在来创建索引，分区表有全局索引和本地索引之分，如果大家要创建位图索引，只能创建本地索引</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">create</span> <span class="keyword">bitmap</span> <span class="keyword">index</span> I_K_F_BILL_MACHINE_CHECK <span class="keyword">on</span> K_F_BILL(MACHINE_CHECK) <span class="keyword">local</span>;</div></pre></td></tr></table></figure>
+<h3 id="哈希分区"><a href="#哈希分区" class="headerlink" title="哈希分区"></a>哈希分区</h3><blockquote>
+<p>也被成为散列分区。<br>这类分区是在列值上使用哈希算法，以确定将行放入哪个分区中。当列的值没有合适的条件时，建议使用散哈希分区。<br>哈希分区为通过指定分区编号来均匀分布数据的一种分区类型，因为通过在I/O设备上进行散列分区，使得这些分区大小一致。<br>对于那些无法有效划分范围的表，可以使用hash分区，这样对于提高性能还是会有一定的帮助。hash分区会将表中的数据平均分配到你指定的几个分 区中，列所在分区是依据分区列的hash值自动分配，因此你并不能控制也不知道哪条记录会被放到哪个分区中，hash分区也可以支持多个依赖列。</p>
+</blockquote>
+<p>一个明细表，里面会根据医院编号，住院号、单据号来判断唯一性。查询这个明细表一定会带着这3个字段，所以这里根据医院编号来做哈希分区。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">CREATE</span> <span class="keyword">TABLE</span> 表</div><div class="line">  (</div><div class="line">  <span class="keyword">ID</span>          VARCHAR2(<span class="number">32</span>) <span class="keyword">not</span> <span class="literal">null</span>,</div><div class="line">  AKB020      VARCHAR2(<span class="number">8</span>) <span class="keyword">not</span> <span class="literal">null</span>,</div><div class="line">  AKC190      VARCHAR2(<span class="number">18</span>) <span class="keyword">not</span> <span class="literal">null</span>,</div><div class="line">  AKC220      VARCHAR2(<span class="number">20</span>) <span class="keyword">not</span> <span class="literal">null</span>,</div><div class="line">  AAE072      VARCHAR2(<span class="number">18</span>) <span class="keyword">not</span> <span class="literal">null</span>,</div><div class="line">  AKC221      <span class="built_in">DATE</span> <span class="keyword">not</span> <span class="literal">null</span>,</div><div class="line">  AKA063      VARCHAR2(<span class="number">3</span>)</div><div class="line">)</div><div class="line">    <span class="keyword">PARTITION</span> <span class="keyword">BY</span> <span class="keyword">HASH</span> (AKB020)</div><div class="line">    <span class="keyword">PARTITIONS</span> <span class="number">32</span></div></pre></td></tr></table></figure>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/12/01/oracle 表分区/" class="archive-article-date">
+  	<time datetime="2016-12-01T12:05:23.874Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-01</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/oracle/">oracle</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-jenkins Undeploy Failed Error" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -343,7 +403,7 @@
     
     	<section class="tools-section tools-section-tag">
     			<div class="widget tagcloud" id="js-tagcloud">
-    				<a href="/tags/Spring-Boot/" style="font-size: 20px;">Spring-Boot</a> <a href="/tags/jenkins/" style="font-size: 10px;">jenkins</a> <a href="/tags/jsckson/" style="font-size: 10px;">jsckson</a> <a href="/tags/拦截器/" style="font-size: 10px;">拦截器</a>
+    				<a href="/tags/Spring-Boot/" style="font-size: 20px;">Spring-Boot</a> <a href="/tags/jenkins/" style="font-size: 10px;">jenkins</a> <a href="/tags/jsckson/" style="font-size: 10px;">jsckson</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/拦截器/" style="font-size: 10px;">拦截器</a>
     			</div>
     	</section>
     
