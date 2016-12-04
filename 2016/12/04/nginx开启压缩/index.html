@@ -6,14 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://long0428.cc">
-  <title>Tag: 拦截器 | To see a world in a flower</title>
+  <title>nginx 开启Gzip压缩 | To see a world in a flower</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="To see a world in a flower">
-<meta property="og:url" content="http://long0428.cc/tags/拦截器/index.html">
+  <meta name="description" content="最近发现前端的css和js加载很耗时，一个服务才33ms，静态文件加起来都几百毫秒了，于是开启nginx的压缩。
+找到nginx.conf
+12345678910111213141516171819202122232425262728293031gzip on;# 默认值: gzip off # 开启或者关闭gzip模块 gzip_comp_level 4;# 默认值：1(建议选择为4)# gzi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nginx 开启Gzip压缩">
+<meta property="og:url" content="http://long0428.cc/2016/12/04/nginx开启压缩/index.html">
 <meta property="og:site_name" content="To see a world in a flower">
+<meta property="og:description" content="最近发现前端的css和js加载很耗时，一个服务才33ms，静态文件加起来都几百毫秒了，于是开启nginx的压缩。
+找到nginx.conf
+12345678910111213141516171819202122232425262728293031gzip on;# 默认值: gzip off # 开启或者关闭gzip模块 gzip_comp_level 4;# 默认值：1(建议选择为4)# gzi">
+<meta property="og:updated_time" content="2016-12-04T02:51:02.314Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="To see a world in a flower">
+<meta name="twitter:title" content="nginx 开启Gzip压缩">
+<meta name="twitter:description" content="最近发现前端的css和js加载很耗时，一个服务才33ms，静态文件加起来都几百毫秒了，于是开启nginx的压缩。
+找到nginx.conf
+12345678910111213141516171819202122232425262728293031gzip on;# 默认值: gzip off # 开启或者关闭gzip模块 gzip_comp_level 4;# 默认值：1(建议选择为4)# gzi">
   
     <link rel="alternative" href="/atom.xml" title="To see a world in a flower" type="application/atom+xml">
   
@@ -125,54 +135,86 @@
 </nav>
 
       <div class="body-wrap">
+        <article id="post-nginx开启压缩" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
         
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/11/30/spring boot增加拦截器/" class="archive-article-date">
-  	<time datetime="2016-11-30T09:38:58.679Z" itemprop="datePublished"><i class="icon-clock"></i>2016-11-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/11/30/spring boot增加拦截器/">spring boot 增加拦截器</a>
+    <h1 class="article-title" itemprop="name">
+      nginx 开启Gzip压缩
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近发现前端的css和js加载很耗时，一个服务才33ms，静态文件加起来都几百毫秒了，于是开启nginx的压缩。</p>
+<p>找到nginx.conf</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">gzip on;</div><div class="line"># 默认值: gzip off </div><div class="line"># 开启或者关闭gzip模块</div><div class="line"> </div><div class="line">gzip_comp_level 4;</div><div class="line"># 默认值：1(建议选择为4)</div><div class="line"># gzip压缩比/压缩级别，压缩级别 1-9，级别越高压缩率越大，当然压缩时间也就越长（传输快但比较消耗cpu）。</div><div class="line"> </div><div class="line">gzip_buffers 4 16k;</div><div class="line"># 默认值: gzip_buffers 4 4k/8k </div><div class="line"># 设置系统获取几个单位的缓存用于存储gzip的压缩结果数据流。 例如 4 4k 代表以4k为单位，按照原始数据大小以4k为单位的4倍申请内存。 4 8k 代表以8k为单位，按照原始数据大小以8k为单位的4倍申请内存。</div><div class="line"># 如果没有设置，默认值是申请跟原始数据相同大小的内存空间去存储gzip压缩结果。</div><div class="line"> </div><div class="line">gzip_types text/plain application/x-javascript text/css application/xml text/javascript application/x-httpd-php;</div><div class="line"># 默认值: gzip_types text/html (默认不对js/css文件进行压缩)</div><div class="line"># 压缩类型，匹配MIME类型进行压缩</div><div class="line"># 不能用通配符 text/*</div><div class="line"># (无论是否指定)text/html默认已经压缩 </div><div class="line"># 设置哪压缩种文本文件可参考 conf/mime.types</div><div class="line"> </div><div class="line">gzip_min_length  1k;</div><div class="line"># 默认值: 0 ，不管页面多大都压缩</div><div class="line"># 设置允许压缩的页面最小字节数，页面字节数从header头中的Content-Length中进行获取。</div><div class="line"># 建议设置成大于1k的字节数，小于1k可能会越压越大。 即: gzip_min_length 1024</div><div class="line"> </div><div class="line">gzip_vary on;</div><div class="line"># 和http头有关系，加个vary头，给代理服务器用的，有的浏览器支持压缩，有的不支持，所以避免浪费不支持的也压缩，所以根据客户端的HTTP头来判断，是否需要压缩</div><div class="line"> </div><div class="line">gzip_disable "MSIE [1-6].";</div><div class="line"># 禁用IE6的gzip压缩，又是因为杯具的IE6。当然，IE6目前依然广泛的存在，所以这里你也可以设置为“MSIE [1-5].”</div><div class="line"># IE6的某些版本对gzip的压缩支持很不好，会造成页面的假死，为了确保其它的IE6版本不出问题，所以建议加上gzip_disable的设置</div></pre></td></tr></table></figure>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/12/04/nginx开启压缩/" class="archive-article-date">
+  	<time datetime="2016-12-04T02:51:02.256Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-04</time>
+</a>
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring-Boot/">Spring-Boot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/拦截器/">拦截器</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/">nginx</a></li></ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-  
-    </div></section>
-  
 
-    
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2016/12/01/oracle 表分区/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">oracle 表分区实战</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="nginx开启压缩" data-title="nginx 开启Gzip压缩" data-url="http://long0428.cc/2016/12/04/nginx开启压缩/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"long0428"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
 
 
       </div>
@@ -195,9 +237,9 @@
 		mathjax: false,
 		animate: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
